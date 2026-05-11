@@ -1,0 +1,145 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-coffee: var(--coffee);
+  --color-walnut: var(--walnut);
+  --color-cream: var(--cream);
+  --color-sand: var(--sand);
+  --font-display: "Cormorant Garamond", "Playfair Display", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Beige / marble white background */
+  --background: oklch(0.975 0.012 80);
+  --foreground: oklch(0.24 0.025 50);
+
+  --card: oklch(0.99 0.008 85);
+  --card-foreground: oklch(0.24 0.025 50);
+
+  --popover: oklch(0.99 0.008 85);
+  --popover-foreground: oklch(0.24 0.025 50);
+
+  /* Coffee brown */
+  --primary: oklch(0.36 0.045 45);
+  --primary-foreground: oklch(0.97 0.012 80);
+
+  /* Cream / sand */
+  --secondary: oklch(0.93 0.025 75);
+  --secondary-foreground: oklch(0.28 0.035 50);
+
+  --muted: oklch(0.94 0.015 80);
+  --muted-foreground: oklch(0.48 0.025 55);
+
+  /* Soft gold accent */
+  --accent: oklch(0.78 0.085 75);
+  --accent-foreground: oklch(0.25 0.03 50);
+
+  --destructive: oklch(0.55 0.18 28);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  --border: oklch(0.88 0.018 75);
+  --input: oklch(0.9 0.018 75);
+  --ring: oklch(0.65 0.07 70);
+
+  /* Brand custom */
+  --gold: oklch(0.74 0.1 78);
+  --coffee: oklch(0.32 0.045 45);
+  --walnut: oklch(0.4 0.06 50);
+  --cream: oklch(0.96 0.018 85);
+  --sand: oklch(0.88 0.035 80);
+
+  --gradient-warm: linear-gradient(135deg, oklch(0.96 0.018 85), oklch(0.9 0.03 78));
+  --gradient-gold: linear-gradient(135deg, oklch(0.82 0.09 78), oklch(0.65 0.08 65));
+  --shadow-soft: 0 10px 40px -12px oklch(0.32 0.045 45 / 0.18);
+  --shadow-luxe: 0 30px 80px -30px oklch(0.32 0.045 45 / 0.25);
+  --shadow-card: 0 4px 24px -8px oklch(0.32 0.045 45 / 0.12);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .bg-marble {
+    background-image:
+      radial-gradient(at 20% 10%, oklch(0.96 0.02 80 / 0.9), transparent 50%),
+      radial-gradient(at 80% 60%, oklch(0.9 0.03 75 / 0.6), transparent 55%),
+      linear-gradient(180deg, var(--background), oklch(0.93 0.022 78));
+  }
+  .text-gold { color: var(--gold); }
+  .bg-coffee { background-color: var(--coffee); }
+  .text-coffee { color: var(--coffee); }
+  .bg-cream { background-color: var(--cream); }
+  .shadow-luxe { box-shadow: var(--shadow-luxe); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  .gradient-gold { background: var(--gradient-gold); }
+  .gradient-warm { background: var(--gradient-warm); }
+  .glass {
+    background: oklch(0.98 0.012 80 / 0.65);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .hairline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

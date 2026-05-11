@@ -1,4 +1,4 @@
-import doctorImg from "@/assets/doctor.jpg";
+import doctorImg from "@/assets/Doctor.jpg";
 import { GraduationCap, Stethoscope, Award } from "lucide-react";
 
 export function Doctor() {
